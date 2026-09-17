@@ -44,33 +44,24 @@ export default function CustomCursor() {
 
   return (
     <>
-      {/* Inner Dot - Fast */}
       <motion.div
-        className="fixed top-0 left-0 w-2 h-2 bg-white rounded-full pointer-events-none z-[10000] mix-blend-difference"
+        className="fixed top-0 left-0 bg-white rounded-full pointer-events-none z-[10000] mix-blend-difference flex items-center justify-center text-black font-bold text-[8px] tracking-widest overflow-hidden"
         animate={{
-          x: mousePosition.x - 4,
-          y: mousePosition.y - 4,
-          scale: isHovered ? 0 : 1,
+          x: mousePosition.x - (isHovered ? 24 : 6),
+          y: mousePosition.y - (isHovered ? 24 : 6),
+          width: isHovered ? 48 : 12,
+          height: isHovered ? 48 : 12,
         }}
-        transition={{ type: "tween", ease: "backOut", duration: 0.1 }}
-      />
-      
-      {/* Outer Ring - Trailing Spring */}
-      <motion.div
-        className="fixed top-0 left-0 w-8 h-8 border border-white/50 bg-white/10 backdrop-blur-[2px] rounded-full pointer-events-none z-[9999] mix-blend-difference"
-        animate={{
-          x: mousePosition.x - (isHovered ? 24 : 16),
-          y: mousePosition.y - (isHovered ? 24 : 16),
-          scale: isHovered ? 1.5 : 1,
-          backgroundColor: isHovered ? "rgba(255, 255, 255, 1)" : "rgba(255, 255, 255, 0.1)",
-        }}
-        transition={{
-          type: "spring",
-          stiffness: 150,
-          damping: 15,
-          mass: 0.2,
-        }}
-      />
+        transition={{ type: "tween", ease: "circOut", duration: 0.15 }}
+      >
+        <motion.span 
+          initial={{ opacity: 0 }} 
+          animate={{ opacity: isHovered ? 1 : 0 }}
+          transition={{ duration: 0.2 }}
+        >
+          VIEW
+        </motion.span>
+      </motion.div>
     </>
   );
 }
