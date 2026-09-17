@@ -29,7 +29,17 @@ export default function Header() {
       {/* Subtle golden bottom border on scroll */}
       <div className={`absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-yellow-600/50 to-transparent transition-opacity duration-500 ${scrolled ? "opacity-100" : "opacity-0"}`} />
       
-      <Link href="/" data-cursor-hover className="flex items-center gap-3 z-50 group">
+      <Link 
+        href="/" 
+        onClick={(e) => {
+          if (window.location.pathname === "/") {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }
+        }}
+        data-cursor-hover 
+        className="flex items-center gap-3 z-50 group"
+      >
         <div className="relative w-12 h-12 transition-transform duration-500 group-hover:scale-105 rounded-full overflow-hidden border border-yellow-600/30">
           <Image src="/logo.png" alt="Editify Logo" fill className="object-cover" />
         </div>
@@ -79,7 +89,17 @@ export default function Header() {
             </Link>
           </Magnetic>
           <Magnetic>
-            <Link href="/shaurya-studios" data-cursor-hover className="group relative text-xs font-bold uppercase tracking-widest text-teal-600 dark:text-teal-400 hover:text-teal-500 transition-colors bg-teal-500/10 px-4 py-2 rounded-full border border-teal-500/30 ml-4 flex items-center gap-2">
+            <Link 
+              href="/shaurya-studios" 
+              onClick={(e) => {
+                if (window.location.pathname === "/shaurya-studios") {
+                  e.preventDefault();
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+              }}
+              data-cursor-hover 
+              className="group relative text-xs font-bold uppercase tracking-widest text-teal-600 dark:text-teal-400 hover:text-teal-500 transition-colors bg-teal-500/10 px-4 py-2 rounded-full border border-teal-500/30 ml-4 flex items-center gap-2"
+            >
               <span className="w-2 h-2 rounded-full bg-teal-500 animate-pulse"></span>
               Shaurya Studios
             </Link>

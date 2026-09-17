@@ -31,7 +31,7 @@ export default function ShauryaStudiosPage() {
     }
 
     gsap.fromTo(
-      ".fade-up",
+      ".fade-up-hero",
       { y: 30, opacity: 0 },
       {
         y: 0,
@@ -42,6 +42,24 @@ export default function ShauryaStudiosPage() {
         delay: 1.2,
       }
     );
+
+    gsap.utils.toArray<HTMLElement>(".grid-item").forEach((item) => {
+      gsap.fromTo(
+        item,
+        { y: 50, opacity: 0 },
+        {
+          scrollTrigger: {
+            trigger: item,
+            start: "top bottom-=100",
+            toggleActions: "play none none reverse"
+          },
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          ease: "power3.out",
+        }
+      );
+    });
 
     return () => {
       ScrollTrigger.getAll().forEach(t => t.kill());
@@ -64,7 +82,7 @@ export default function ShauryaStudiosPage() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40vw] h-[40vw] max-w-[500px] max-h-[500px] bg-cyan-400/20 blur-[80px] rounded-full animate-pulse" style={{ animationDuration: '6s', animationDelay: '1s' }} />
         
         {/* Premium Badge */}
-        <div className="fade-up mb-8 px-6 py-2 rounded-full border border-teal-500/30 bg-teal-500/10 backdrop-blur-md flex items-center gap-2 shadow-[0_0_20px_rgba(20,184,166,0.15)]">
+        <div className="fade-up-hero mb-8 px-6 py-2 rounded-full border border-teal-500/30 bg-teal-500/10 backdrop-blur-md flex items-center gap-2 shadow-[0_0_20px_rgba(20,184,166,0.15)]">
           <span className="w-2 h-2 rounded-full bg-teal-400 animate-ping" />
           <span className="w-2 h-2 rounded-full bg-teal-400 absolute" />
           <span className="text-xs font-bold tracking-[0.2em] uppercase text-teal-300">The Sub-Brand</span>
@@ -82,7 +100,7 @@ export default function ShauryaStudiosPage() {
           </div>
         </h1>
         
-        <p className="fade-up mt-10 max-w-2xl text-center text-zinc-600 dark:text-zinc-400 text-lg md:text-xl font-medium leading-relaxed relative z-10">
+        <p className="fade-up-hero mt-10 max-w-2xl text-center text-zinc-600 dark:text-zinc-400 text-lg md:text-xl font-medium leading-relaxed relative z-10">
           Where <span className="text-zinc-900 dark:text-white font-bold">elite engineering</span> meets <span className="text-teal-600 dark:text-teal-400 font-bold">cinematic video production.</span><br className="hidden md:block"/> We build high-retention experiences.
         </p>
       </section>
@@ -90,14 +108,14 @@ export default function ShauryaStudiosPage() {
       {/* Portfolio Videos */}
       <section className="w-full px-5 md:px-10 py-20 z-10 relative">
         <div className="max-w-[1400px] mx-auto">
-          <h2 className="fade-up text-2xl font-bold tracking-widest text-teal-600 dark:text-teal-500 uppercase mb-10 text-center">Featured Work</h2>
+          <h2 className="grid-item text-2xl font-bold tracking-widest text-teal-600 dark:text-teal-500 uppercase mb-10 text-center">Featured Work</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {[
               "https://media.githubusercontent.com/media/shaurya-studios/editify-studios/main/public/shaurya1.mp4",
               "https://media.githubusercontent.com/media/shaurya-studios/editify-studios/main/public/shaurya2.mp4",
               "https://media.githubusercontent.com/media/shaurya-studios/editify-studios/main/public/shaurya3.mp4"
             ].map((videoSrc, i) => (
-              <div key={i} className="fade-up group relative aspect-[4/5] bg-zinc-200 dark:bg-zinc-900 rounded-[2rem] overflow-hidden border border-zinc-300 dark:border-zinc-800 hover:border-teal-500/50 transition-colors duration-500">
+              <div key={i} className="grid-item group relative aspect-[4/5] bg-zinc-200 dark:bg-zinc-900 rounded-[2rem] overflow-hidden border border-zinc-300 dark:border-zinc-800 hover:border-teal-500/50 transition-colors duration-500">
                 <video src={videoSrc} autoPlay loop muted playsInline className="w-full h-full object-cover scale-105 group-hover:scale-100 transition-transform duration-1000 ease-[cubic-bezier(0.25,1,0.5,1)]" />
               </div>
             ))}
@@ -107,7 +125,7 @@ export default function ShauryaStudiosPage() {
 
       {/* Contact Section (Recreating the Dark Modal Design) */}
       <section className="w-full px-5 md:px-10 py-20 z-10 relative flex justify-center">
-        <div className="fade-up w-full max-w-2xl bg-[#0d1114] rounded-3xl p-8 md:p-12 border border-[#1a2327] shadow-2xl relative overflow-hidden">
+        <div className="grid-item w-full max-w-2xl bg-[#0d1114] rounded-3xl p-8 md:p-12 border border-[#1a2327] shadow-2xl relative overflow-hidden">
           {/* Subtle teal glow in the corner of the modal */}
           <div className="absolute top-0 left-0 w-64 h-64 bg-teal-500/10 blur-[100px] rounded-full pointer-events-none" />
           

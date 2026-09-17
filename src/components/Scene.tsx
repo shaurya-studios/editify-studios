@@ -60,14 +60,73 @@ function GoldenMonolithScene() {
     </group>
   );
 }
+function TealCrystalScene() {
+  const tiltGroupRef = useRef<THREE.Group>(null);
+  const spinGroupRef = useRef<THREE.Group>(null);
+  const mouse = useRef({ x: 0, y: 0 });
+  const currentSpeed = useRef(0.003);
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      mouse.current.x = (e.clientX / window.innerWidth) * 2 - 1;
+      mouse.current.y = -(e.clientY / window.innerHeight) * 2 + 1;
+    };
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, []);
+
+  useFrame(() => {
+    if (!tiltGroupRef.current || !spinGroupRef.current) return;
+    
+    const targetX = (mouse.current.x * Math.PI) / 8;
+    const targetY = (mouse.current.y * Math.PI) / 8;
+    
+    tiltGroupRef.current.rotation.y = THREE.MathUtils.lerp(tiltGroupRef.current.rotation.y, targetX, 0.05);
+    tiltGroupRef.current.rotation.x = THREE.MathUtils.lerp(tiltGroupRef.current.rotation.x, -targetY, 0.05);
+    
+    const distance = Math.sqrt(mouse.current.x ** 2 + mouse.current.y ** 2);
+    const targetSpeed = distance < 0.4 ? 0.0005 : 0.003;
+    currentSpeed.current = THREE.MathUtils.lerp(currentSpeed.current, targetSpeed, 0.05);
+    
+    spinGroupRef.current.rotation.y -= currentSpeed.current;
+    spinGroupRef.current.rotation.x += currentSpeed.current * 0.5;
+  });
+
+  return (
+    <group ref={tiltGroupRef}>
+      <group ref={spinGroupRef}>
+        <Float speed={3} rotationIntensity={0.5} floatIntensity={1.5}>
+          <mesh>
+            <octahedronGeometry args={[2.5, 0]} />
+            <meshPhysicalMaterial 
+              color="#0d9488" 
+              roughness={0.1} 
+              metalness={0.5} 
+              transmission={0.8}
+              thickness={1.5}
+              envMapIntensity={2}
+            />
+          </mesh>
+          <mesh>
+            <octahedronGeometry args={[2.55, 0]} />
+            <meshBasicMaterial color="#2dd4bf" wireframe transparent opacity={0.1} />
+          </mesh>
+        </Float>
+      </group>
+    </group>
+  );
+}
 
 import { useDeviceMode } from "./DeviceModeProvider";
 import { EffectComposer, Bloom } from "@react-three/postprocessing";
+
+import { usePathname } from "next/navigation";
 
 export default function Scene() {
   const { theme } = useTheme();
   const { isPhone } = useDeviceMode();
   const [mounted, setMounted] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const t = setTimeout(() => setMounted(true), 0);
@@ -77,14 +136,17 @@ export default function Scene() {
   if (!mounted || isPhone) return null;
 
   const isDark = theme === "dark" || !theme;
+  const isShaurya = pathname === "/shaurya-studios";
 
   return (
     <div className="fixed inset-0 z-[-1] pointer-events-none mix-blend-normal opacity-80 dark:opacity-100">
       <Canvas camera={{ position: [0, 0, 8] }} dpr={[1, 1.5]}>
         <ambientLight intensity={isDark ? 0.5 : 1} />
         <directionalLight position={[10, 20, 10]} intensity={1.5} />
-        <directionalLight position={[-10, -20, -10]} intensity={0.5} color="#ca8a04" />
-        <GoldenMonolithScene />
+        <directionalLight position={[-10, -20, -10]} intensity={0.5} color={isShaurya ? "#0d9488" : "#ca8a04"} />
+        
+        {isShaurya ? <TealCrystalScene /> : <GoldenMonolithScene />}
+        
         <Environment preset="city" />
         <EffectComposer>
           <Bloom luminanceThreshold={0.2} luminanceSmoothing={0.9} height={300} opacity={1.5} />
