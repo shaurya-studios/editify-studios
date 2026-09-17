@@ -285,7 +285,7 @@ export default function Page() {
                   </div>
 
                   <div className="mt-auto pt-8">
-                    <Magnetic>
+                    <Magnetic className="w-full flex">
                       <a href="https://discord.gg/JMhA5PERdS" target="_blank" rel="noreferrer" className="w-full block text-center py-4 rounded-full border border-zinc-300 dark:border-zinc-700 text-zinc-900 dark:text-white font-bold tracking-widest text-sm hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors">
                         START PROJECT
                       </a>
@@ -332,7 +332,7 @@ export default function Page() {
                   </div>
 
                   <div className="mt-auto pt-8 relative z-20">
-                    <Magnetic>
+                    <Magnetic className="w-full flex">
                       <a href="https://discord.gg/JMhA5PERdS" target="_blank" rel="noreferrer" className="w-full block text-center py-4 rounded-full bg-yellow-600 text-white dark:bg-yellow-500 dark:text-[#050505] font-bold tracking-widest text-sm hover:scale-[1.02] transition-transform shadow-[0_0_20px_rgba(202,138,4,0.2)]">
                         START PROJECT
                       </a>
@@ -344,8 +344,8 @@ export default function Page() {
           </div>
 
           {/* Bulk Orders Note */}
-          <Magnetic>
-            <a href="https://discord.gg/JMhA5PERdS" target="_blank" rel="noreferrer" className="grid-item mt-10 p-8 rounded-[2rem] border border-zinc-200/50 bg-white/30 dark:border-zinc-800/50 dark:bg-zinc-950/30 backdrop-blur-sm flex flex-col items-center justify-center text-center hover:border-yellow-600/30 hover:bg-yellow-600/5 dark:hover:bg-yellow-500/5 transition-all duration-500 cursor-pointer w-full block">
+          <Magnetic className="w-full flex mt-10">
+            <a href="https://discord.gg/JMhA5PERdS" target="_blank" rel="noreferrer" className="grid-item p-8 rounded-[2rem] border border-zinc-200/50 bg-white/30 dark:border-zinc-800/50 dark:bg-zinc-950/30 backdrop-blur-sm flex flex-col items-center justify-center text-center hover:border-yellow-600/30 hover:bg-yellow-600/5 dark:hover:bg-yellow-500/5 transition-all duration-500 cursor-pointer w-full block">
               <h3 className="text-xl font-bold uppercase text-zinc-900 dark:text-white mb-2 tracking-widest">Bulk Orders</h3>
               <p className="text-sm text-zinc-600 dark:text-zinc-400 font-medium">We offer flexible pricing for high-volume clients. Click to negotiate a custom package.</p>
             </a>

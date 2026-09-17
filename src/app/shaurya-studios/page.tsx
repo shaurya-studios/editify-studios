@@ -58,21 +58,32 @@ export default function ShauryaStudiosPage() {
       {/* Background Ambience (Teal instead of Gold) */}
       <div className="fixed top-[-20%] left-[-10%] w-[50vw] h-[50vw] bg-teal-600/10 dark:bg-teal-600/5 rounded-full blur-[120px] pointer-events-none z-0" />
       
-      {/* Hero Section */}
-      <section className="min-h-[70vh] w-full flex flex-col items-center justify-center relative z-10 px-6 pt-32 pb-10">
+      <section className="min-h-[70vh] w-full flex flex-col items-center justify-center relative z-10 px-6 pt-32 pb-10 overflow-hidden">
+        {/* Animated Gradient Orbs specific to Shaurya Studios */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[60vw] max-w-[800px] max-h-[800px] bg-teal-500/20 blur-[100px] rounded-full animate-pulse" style={{ animationDuration: '4s' }} />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40vw] h-[40vw] max-w-[500px] max-h-[500px] bg-cyan-400/20 blur-[80px] rounded-full animate-pulse" style={{ animationDuration: '6s', animationDelay: '1s' }} />
+        
+        {/* Premium Badge */}
+        <div className="fade-up mb-8 px-6 py-2 rounded-full border border-teal-500/30 bg-teal-500/10 backdrop-blur-md flex items-center gap-2 shadow-[0_0_20px_rgba(20,184,166,0.15)]">
+          <span className="w-2 h-2 rounded-full bg-teal-400 animate-ping" />
+          <span className="w-2 h-2 rounded-full bg-teal-400 absolute" />
+          <span className="text-xs font-bold tracking-[0.2em] uppercase text-teal-300">The Sub-Brand</span>
+        </div>
+
         <h1 
           ref={textRef} 
-          className="text-[10vw] md:text-[7vw] font-bold leading-[0.85] tracking-tighter text-center uppercase flex flex-col items-center"
+          className="text-[12vw] md:text-[8vw] font-black leading-[0.8] tracking-tighter text-center flex flex-col items-center relative z-10"
         >
           <div className="overflow-hidden py-1 md:py-2">
-            {"SHAURYA".split("").map((char, i) => <span key={`s-${i}`} className="char inline-block translate-y-full">{char === " " ? "\u00A0" : char}</span>)}
+            {"SHAURYA".split("").map((char, i) => <span key={`s-${i}`} className="char inline-block translate-y-full drop-shadow-[0_0_30px_rgba(255,255,255,0.3)] bg-clip-text text-transparent bg-gradient-to-b from-white to-zinc-400">{char === " " ? "\u00A0" : char}</span>)}
           </div>
-          <div className="overflow-hidden py-1 md:py-2 text-transparent dark:text-transparent" style={{ WebkitTextStroke: '2px currentColor', color: 'var(--foreground)' }}>
-            {"STUDIOS".split("").map((char, i) => <span key={`st-${i}`} className="char inline-block translate-y-full">{char === " " ? "\u00A0" : char}</span>)}
+          <div className="overflow-hidden py-1 md:py-2 relative">
+            {"STUDIOS".split("").map((char, i) => <span key={`st-${i}`} className="char inline-block translate-y-full text-transparent bg-clip-text bg-gradient-to-r from-teal-400 via-cyan-300 to-teal-400 bg-[length:200%_auto] animate-[gradient_4s_linear_infinite] drop-shadow-[0_0_20px_rgba(20,184,166,0.4)]">{char === " " ? "\u00A0" : char}</span>)}
           </div>
         </h1>
-        <p className="fade-up mt-8 max-w-lg text-center text-zinc-600 dark:text-zinc-400 text-lg md:text-xl font-medium leading-relaxed">
-          Premium Full-Stack Engineering & Video Production
+        
+        <p className="fade-up mt-10 max-w-2xl text-center text-zinc-400 text-lg md:text-xl font-medium leading-relaxed relative z-10">
+          Where <span className="text-white font-bold">elite engineering</span> meets <span className="text-teal-400 font-bold">cinematic video production.</span><br className="hidden md:block"/> We build high-retention experiences.
         </p>
       </section>
 
@@ -82,9 +93,9 @@ export default function ShauryaStudiosPage() {
           <h2 className="fade-up text-2xl font-bold tracking-widest text-teal-600 dark:text-teal-500 uppercase mb-10 text-center">Featured Work</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {[
-              "/shaurya1.mp4",
-              "/shaurya2.mp4",
-              "/shaurya3.mp4"
+              "https://media.githubusercontent.com/media/shaurya-studios/editify-studios/main/public/shaurya1.mp4",
+              "https://media.githubusercontent.com/media/shaurya-studios/editify-studios/main/public/shaurya2.mp4",
+              "https://media.githubusercontent.com/media/shaurya-studios/editify-studios/main/public/shaurya3.mp4"
             ].map((videoSrc, i) => (
               <div key={i} className="fade-up group relative aspect-[4/5] bg-zinc-200 dark:bg-zinc-900 rounded-[2rem] overflow-hidden border border-zinc-300 dark:border-zinc-800 hover:border-teal-500/50 transition-colors duration-500">
                 <video src={videoSrc} controls preload="auto" loop muted playsInline className="w-full h-full object-cover scale-105 group-hover:scale-100 transition-transform duration-1000 ease-[cubic-bezier(0.25,1,0.5,1)] custom-video-controls" />

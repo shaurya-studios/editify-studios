@@ -1,10 +1,10 @@
 export const VIDEO_PORTFOLIO = [
-  "/varts.mp4",
-  "/varts1.mp4",
-  "/varts2.mp4",
-  "/varts3.mp4",
-  "/varts4.mp4",
-  "/parts.mp4",
+  "https://media.githubusercontent.com/media/shaurya-studios/editify-studios/main/public/varts.mp4",
+  "https://media.githubusercontent.com/media/shaurya-studios/editify-studios/main/public/varts1.mp4",
+  "https://media.githubusercontent.com/media/shaurya-studios/editify-studios/main/public/varts2.mp4",
+  "https://media.githubusercontent.com/media/shaurya-studios/editify-studios/main/public/varts3.mp4",
+  "https://media.githubusercontent.com/media/shaurya-studios/editify-studios/main/public/varts4.mp4",
+  "https://media.githubusercontent.com/media/shaurya-studios/editify-studios/main/public/parts.mp4",
 ];
 
 export const MARQUEE_ROW_1 = [

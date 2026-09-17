@@ -4,7 +4,7 @@ import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { useSFX } from "@/hooks/useSFX";
 
-export default function Magnetic({ children }: { children: React.ReactNode }) {
+export default function Magnetic({ children, className }: { children: React.ReactNode, className?: string }) {
   const ref = useRef<HTMLDivElement>(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const { playHover, playClick } = useSFX();
@@ -27,7 +27,8 @@ export default function Magnetic({ children }: { children: React.ReactNode }) {
   const { x, y } = position;
   return (
     <motion.div
-      style={{ position: "relative", display: "inline-block" }}
+      className={className}
+      style={{ position: "relative", display: className ? undefined : "inline-block" }}
       ref={ref}
       onMouseEnter={handleMouseEnter}
       onClick={handleClick}
