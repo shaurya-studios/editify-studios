@@ -75,15 +75,15 @@ export default function ShauryaStudiosPage() {
           className="text-[12vw] md:text-[8vw] font-black leading-[0.8] tracking-tighter text-center flex flex-col items-center relative z-10"
         >
           <div className="overflow-hidden py-1 md:py-2">
-            {"SHAURYA".split("").map((char, i) => <span key={`s-${i}`} className="char inline-block translate-y-full drop-shadow-[0_0_30px_rgba(255,255,255,0.3)] bg-clip-text text-transparent bg-gradient-to-b from-white to-zinc-400">{char === " " ? "\u00A0" : char}</span>)}
+            {"SHAURYA".split("").map((char, i) => <span key={`s-${i}`} className="char inline-block translate-y-full drop-shadow-sm dark:drop-shadow-[0_0_30px_rgba(255,255,255,0.3)] bg-clip-text text-transparent bg-gradient-to-b from-zinc-800 to-zinc-500 dark:from-white dark:to-zinc-400">{char === " " ? "\u00A0" : char}</span>)}
           </div>
           <div className="overflow-hidden py-1 md:py-2 relative">
-            {"STUDIOS".split("").map((char, i) => <span key={`st-${i}`} className="char inline-block translate-y-full text-transparent bg-clip-text bg-gradient-to-r from-teal-400 via-cyan-300 to-teal-400 bg-[length:200%_auto] animate-[gradient_4s_linear_infinite] drop-shadow-[0_0_20px_rgba(20,184,166,0.4)]">{char === " " ? "\u00A0" : char}</span>)}
+            {"STUDIOS".split("").map((char, i) => <span key={`st-${i}`} className="char inline-block translate-y-full text-transparent bg-clip-text bg-gradient-to-r from-teal-600 via-cyan-500 to-teal-600 dark:from-teal-400 dark:via-cyan-300 dark:to-teal-400 bg-[length:200%_auto] animate-[gradient_4s_linear_infinite] drop-shadow-sm dark:drop-shadow-[0_0_20px_rgba(20,184,166,0.4)]">{char === " " ? "\u00A0" : char}</span>)}
           </div>
         </h1>
         
-        <p className="fade-up mt-10 max-w-2xl text-center text-zinc-400 text-lg md:text-xl font-medium leading-relaxed relative z-10">
-          Where <span className="text-white font-bold">elite engineering</span> meets <span className="text-teal-400 font-bold">cinematic video production.</span><br className="hidden md:block"/> We build high-retention experiences.
+        <p className="fade-up mt-10 max-w-2xl text-center text-zinc-600 dark:text-zinc-400 text-lg md:text-xl font-medium leading-relaxed relative z-10">
+          Where <span className="text-zinc-900 dark:text-white font-bold">elite engineering</span> meets <span className="text-teal-600 dark:text-teal-400 font-bold">cinematic video production.</span><br className="hidden md:block"/> We build high-retention experiences.
         </p>
       </section>
 
@@ -98,7 +98,7 @@ export default function ShauryaStudiosPage() {
               "https://media.githubusercontent.com/media/shaurya-studios/editify-studios/main/public/shaurya3.mp4"
             ].map((videoSrc, i) => (
               <div key={i} className="fade-up group relative aspect-[4/5] bg-zinc-200 dark:bg-zinc-900 rounded-[2rem] overflow-hidden border border-zinc-300 dark:border-zinc-800 hover:border-teal-500/50 transition-colors duration-500">
-                <video src={videoSrc} controls preload="auto" loop muted playsInline className="w-full h-full object-cover scale-105 group-hover:scale-100 transition-transform duration-1000 ease-[cubic-bezier(0.25,1,0.5,1)] custom-video-controls" />
+                <video src={videoSrc} autoPlay loop muted playsInline className="w-full h-full object-cover scale-105 group-hover:scale-100 transition-transform duration-1000 ease-[cubic-bezier(0.25,1,0.5,1)]" />
               </div>
             ))}
           </div>

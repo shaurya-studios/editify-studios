@@ -162,7 +162,7 @@ export default function Page() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-20">
             {VIDEO_PORTFOLIO.map((videoSrc, i) => (
               <div key={i} className="grid-item group relative aspect-[4/5] bg-zinc-200 dark:bg-zinc-900 rounded-[2rem] overflow-hidden border border-zinc-300 dark:border-zinc-800 hover:border-yellow-600/50 transition-colors duration-500">
-                <video src={videoSrc} controls preload="auto" loop muted playsInline className="w-full h-full object-cover scale-105 group-hover:scale-100 transition-transform duration-1000 ease-[cubic-bezier(0.25,1,0.5,1)] custom-video-controls" />
+                <video src={videoSrc} autoPlay loop muted playsInline className="w-full h-full object-cover scale-105 group-hover:scale-100 transition-transform duration-1000 ease-[cubic-bezier(0.25,1,0.5,1)]" />
               </div>
             ))}
           </div>
