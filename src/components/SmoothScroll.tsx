@@ -12,7 +12,8 @@ export default function SmoothScroll({ children }: { children: ReactNode }) {
         duration: 1.5,
       }}
     >
-      {children as unknown}
+      {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+      {children as any}
     </ReactLenis>
   );
 }
