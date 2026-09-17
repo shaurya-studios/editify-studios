@@ -86,7 +86,7 @@ export default function Scene() {
         <directionalLight position={[-10, -20, -10]} intensity={0.5} color="#ca8a04" />
         <GoldenMonolithScene />
         <Environment preset="city" />
-        <EffectComposer disableNormalPass>
+        <EffectComposer>
           <Bloom luminanceThreshold={0.2} luminanceSmoothing={0.9} height={300} opacity={1.5} />
         </EffectComposer>
       </Canvas>
