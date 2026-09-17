@@ -20,6 +20,7 @@ export function DeviceModeProvider({ children }: { children: React.ReactNode }) 
     const isTouch = window.matchMedia("(pointer: coarse)").matches;
     const isSmallScreen = window.innerWidth < 768;
     if (isTouch || isSmallScreen) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setMode("phone");
     }
   }, []);

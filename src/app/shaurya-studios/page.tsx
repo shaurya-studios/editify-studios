@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Link from "next/link";
+
 import Magnetic from "@/components/Magnetic";
 import { Mail, MessageSquare, ExternalLink, Copy } from "lucide-react";
 

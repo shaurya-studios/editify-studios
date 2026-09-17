@@ -5,7 +5,7 @@ import { useCallback } from "react";
 export function useSFX() {
   const playHover = useCallback(() => {
     try {
-      const AudioContext = window.AudioContext || (window as any).webkitAudioContext;
+      const AudioContext = window.AudioContext || (window as unknown as { webkitAudioContext: typeof window.AudioContext }).webkitAudioContext;
       if (!AudioContext) return;
       const ctx = new AudioContext();
       const osc = ctx.createOscillator();
@@ -23,14 +23,14 @@ export function useSFX() {
       gain.connect(ctx.destination);
       osc.start();
       osc.stop(ctx.currentTime + 0.05);
-    } catch (e) {
+    } catch {
       // Ignore audio errors (e.g. strict autoplay policies before user interaction)
     }
   }, []);
 
   const playClick = useCallback(() => {
     try {
-      const AudioContext = window.AudioContext || (window as any).webkitAudioContext;
+      const AudioContext = window.AudioContext || (window as unknown as { webkitAudioContext: typeof window.AudioContext }).webkitAudioContext;
       if (!AudioContext) return;
       const ctx = new AudioContext();
       const osc = ctx.createOscillator();
@@ -48,7 +48,7 @@ export function useSFX() {
       gain.connect(ctx.destination);
       osc.start();
       osc.stop(ctx.currentTime + 0.1);
-    } catch (e) {
+    } catch {
       // Ignore audio errors
     }
   }, []);

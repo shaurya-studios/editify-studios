@@ -12,7 +12,7 @@ export default function SmoothScroll({ children }: { children: ReactNode }) {
         duration: 1.5,
       }}
     >
-      {children as any}
+      {children as unknown}
     </ReactLenis>
   );
 }
